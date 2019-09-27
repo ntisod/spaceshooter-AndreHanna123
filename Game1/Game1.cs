@@ -12,8 +12,9 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;  
-        Texture2D ship_texture;  // rymdskepp grafik
-        Vector2 ship_Vector;    // position
+        Texture2D ship_texture;  // rymdskeppets grafik
+        Vector2 ship_Vector;    // rymdskeppets position
+        Vector2 ship_speed;    // rymdskeppets hastighet
 
         public Game1()
         {
@@ -30,8 +31,13 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            // skeppets startposition
             ship_Vector.X = 380;
             ship_Vector.Y = 400;
+
+            // hastighet
+            ship_speed.X = 2.5f;
+            ship_speed.Y = 4.5f;
 
             base.Initialize();
         }
@@ -60,6 +66,7 @@ namespace Game1
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+
         }
 
         /// <summary>
@@ -74,6 +81,46 @@ namespace Game1
 
             // TODO: Add your update logic here
 
+            //Tangentbordsstyrning
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            if (keyboardState.IsKeyDown(Keys.Right) || keyboardState.IsKeyDown(Keys.D))
+                {
+                ship_Vector.X += ship_speed.X;
+                }
+
+            if (keyboardState.IsKeyDown(Keys.Left) || keyboardState.IsKeyDown(Keys.A))
+            {
+                ship_Vector.X -= ship_speed.X;
+            }
+
+            if (keyboardState.IsKeyDown(Keys.Down) || keyboardState.IsKeyDown(Keys.S))
+            {
+                ship_Vector.Y += ship_speed.Y;
+            }
+
+            if (keyboardState.IsKeyDown(Keys.Up) || keyboardState.IsKeyDown(Keys.W))
+            {
+                ship_Vector.Y -= ship_speed.Y;
+            }
+            // skeppets förflyttning
+            /*
+            ship_Vector.X += ship_speed.X;
+
+            // förhindra åka utanför sidkanterna
+            if(ship_Vector.X < 0 || ship_Vector.X > Window.ClientBounds.Width - ship_texture.Width)
+            {
+                ship_speed.X = ship_speed.X * -1;
+            }
+
+            ship_Vector.Y += ship_speed.Y;
+            // förhindra skeppet att åka utanför över och underkanter
+
+            if(ship_Vector.Y < 0 || ship_Vector.Y > Window.ClientBounds.Height-ship_texture.Height)
+            {
+                ship_speed.Y = ship_speed.Y * -1;
+            }
+            */
             base.Update(gameTime);
         }
 
@@ -83,7 +130,7 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
