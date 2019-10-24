@@ -5,4 +5,7 @@ spaceshooter-AndreHanna123 created by GitHub Classroom
 Enligt mina anteckningar har du nått sid 81 i boken.
 Det innebär att du idag ska programmera kollisionsprogrammering. Se till att du kan kollidera med fienden. Du borde också kunna hinna med guldmynten. 
 Sätt mål att ta dig till sid 86 innan imorgon.
+
+2019-10-24 Läs på om abstrakta metoder och gör så att du har två olika fiendetyper. Mål: sid 91.
+
 Skriv i den här filen hur långt du hunnit i slutet av lektionen. Skriv också om du har något problem eller någon annan fråga till mig. 
